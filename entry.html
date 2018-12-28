@@ -1,0 +1,77 @@
+<!doctype html>
+<html> 
+    <head>
+        <title>Inputs</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+        <script src="scripts/loginShow.js" type="text/javascript"></script>
+        <link href="styles/main.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.typekit.net/win8noj.css">
+        <link rel="stylesheet" href="https://use.typekit.net/hso7otw.css">
+
+
+    </head>
+    
+    <body>
+        
+    <div id="main_nav">
+        <a href="index.html"><h2>DJdb</h2></a>
+        
+        
+    </div>
+    <main id="main_content">    
+    <div class="topContainer"> 
+        
+        <div id="heading">
+            <h3>DJdb</h3>
+            <p>Please enter the information you would like to add to our database.</p>
+        </div>
+        
+        <!--<div id="login">
+            <button class="loginButtons" id="loginButton" href = "documents/login.html">User Login</button>
+            <button class="loginButtons">Display your data</button>
+        </div>-->
+        
+    </div>
+        
+        <form action="insert.php" method="post" id="formm"> 
+                <input name="name"   placeholder="Song" id="name">
+                <input name="artist" placeholder="Artist" id="artist">
+                <input name="album" placeholder="Album" id="album">
+                <input name="genre" placeholder="Genre" id="genre">
+                <textarea name="comments" placeholder="Comments" id="comments"></textarea>
+                
+                <div id="button_container">
+                    <button id="button1" class="buttons">Submit</button>
+                    <!--<button type="submit" value="insert" class="buttons">Insert</button>-->
+                    <button type="reset" class="buttons">Reset</button>
+                </div>
+                
+        </form>  
+        
+     </main>   
+        <div id="footer">
+            <p>Made by Connor Matheny</p>
+        </div>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> 
+        <script>
+    $(document).ready(function() {
+
+        $("#name").focus();
+        //read click
+        $("button1").on("click",function() {
+
+            let songObject = {};  //create empty object
+            songObject.name = $("#name").val();  // read input value
+            songObject.artist = $("#artist").val();
+            songObject.album = $("#album").val();
+            songObject.genre = $("#genre").val();
+            songObject.comments = $("#comments").val();
+            $("div").load("insert.php",songObject);  //make AJAX call, send person object as data
+        });
+    });
+
+</script>
+    </body>
+</html>
